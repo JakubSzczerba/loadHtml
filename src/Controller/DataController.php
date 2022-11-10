@@ -22,13 +22,12 @@ class DataController extends AbstractController
     }
 
     /**
-    * @Route("/", name="getData")
+    * @Route("/get", name="getData")
     */
     public function getData()
     {
         $data = $this->dataPovider->serializeData();
 
-        dd($data);
         return $data;
     }
 
