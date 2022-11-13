@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Products {% endblock %}
+
+{% block body %} 
+<table class="table table-striped"> 
+    <thead>
+        <tr>
+            <th>Name</th>           
+            <th>Url</th>
+            <th>Image</th> 
+            <th>Price</th>    
+            <th>Opinions</th>    
+            <th>Stars</th>                           
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in data %}
+            <tr>
+                <td>{{product[0]}}</td>
+                <td>{{product[1]}}</td>
+                <td>{{product[2]}}</td>
+                <td>{{product[3]}}</td>
+                <td>{{product[4]}}</td>
+                <td>{{product[5]}}</td>
+            </tr>                                                                                                                                                                           
+        {% endfor %}  
+        </tbody>
+</table>
+{% endblock %}
