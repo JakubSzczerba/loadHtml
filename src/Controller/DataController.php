@@ -27,8 +27,10 @@ class DataController extends AbstractController
     public function getData()
     {
         $data = $this->dataPovider->serializeData();
-
-        return $data;
+        
+        return $this->render('Products//list.html.twig', [
+            'data' => $data,
+          ]);
     }
 
 }
