@@ -67,8 +67,7 @@ class DataProvider
             $opinions[] = $opinion;
             
             $star = mb_substr($chars, 0,5);
-            $result = strlen($star);
-            $stars[] = $result; //need to fix
+            $stars[] = $star;
         }
 
         $array = [];

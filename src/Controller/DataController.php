@@ -10,15 +10,19 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Services\DataProvider;
+use App\Services\ProductProvider;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class DataController extends AbstractController
 {
     private DataProvider $dataPovider;
 
-    public function __construct(DataProvider $dataPovider)
+    private ProductProvider $productProvider;
+
+    public function __construct(DataProvider $dataPovider, ProductProvider $productProvider)
     {
         $this->dataPovider = $dataPovider;
+        $this->productProvider = $productProvider;
     }
 
     /**
@@ -27,10 +31,24 @@ class DataController extends AbstractController
     public function getData()
     {
         $data = $this->dataPovider->serializeData();
-        
+
         return $this->render('Products//list.html.twig', [
             'data' => $data,
           ]);
     }
 
+    /**
+    * @Route("/get/{product}", name="getProduct")
+    */
+    public function getProduct(string $product)
+    {
+        $data = $this->productProvider->serializeProduct($product);
+
+        $variants = $this->productProvider->serializeVariants($product);
+
+        return $this->render('Products//details.html.twig', [
+            'data' => $data,
+            'variants' => $variants,
+          ]);
+    }
 }
