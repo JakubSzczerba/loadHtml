@@ -1,3 +1,7 @@
 index:
     path: /
     controller: App\Controller\DataController::getData
+    
+getProduct:
+    path:     /{product}
+    controller: App\Controller\DataController::getProduct

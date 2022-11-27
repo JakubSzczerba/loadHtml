@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Products {% endblock %}
+
+{% block body %} 
+<table class="table table-striped"> 
+    <thead>
+        <tr>
+            <th>Price</th>           
+            <th>Old price</th>
+            <th>Image</th> 
+            <th>Code</th>
+            <th>Opinions</th>    
+            <th>Stars</th>                           
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{data[0]}}</td>
+            <td><s>{{data[1]}}</s></td>
+            <td>{{data[2]}}</td>
+            <td>{{data[3]}}</td>
+            <td>{{data[4]}}</td>
+            <td>{{data[5]}}</td>
+        </tr>                                                                                                                                                                          
+    </tbody>
+</table></br></br>
+{% if variants is not empty %}
+    <h3>Variants</h3>
+    {% for key, value in variants %}
+        <table class="table table-striped"> 
+            <thead>
+                <tr>
+                    <th>Name</th>           
+                    <th>Price</th>
+                    <th>Old price</th>                         
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{data[6]}} #{{ key }}</td> 
+                    <td>{{ value['price'] }}</td>
+                    <td><s>{{ value['price_old'] }}</s></td>
+                </tr>                                                                                                                                                                          
+            </tbody>
+        </table>                                                                                                                                                       
+    {% endfor %}  
+{% endif %}
+{% endblock %}
